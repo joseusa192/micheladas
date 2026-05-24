@@ -59,6 +59,7 @@ export default function MicheladasPage() {
   };
 
   const total = cart.reduce((acc, item) => acc + item.price, 0);
+  const isMobile = window.innerWidth <= 768;
 
   return (
     <div
@@ -74,19 +75,24 @@ export default function MicheladasPage() {
           backgroundColor: '#70d100',
           padding: '18px 40px',
           display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
+          gap: '20px',
+          flexWrap: 'wrap',
+          width: '100%',
+          boxSizing: 'border-box',
           position: 'sticky',
           top: 0,
           zIndex: 1000,
           boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
         }}
       >
-        <h1 style={{ color: '#ffffff', fontSize: '32px' }}>
+        <h1 style={{ color: '#ffffff', fontSize: '42px' }}>
           Micheladas Viche
         </h1>
 
-        <div style={{ display: 'flex', gap: '25px', color: 'white' }}>
+        <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap',justifyContent: 'right',width: '100%', color: 'white' }}>
           <a href="#inicio" style={linkStyle}>Inicio</a>
           <a href="#menu" style={linkStyle}>Menú</a>
           <a href="#promos" style={linkStyle}>Promociones</a>
@@ -117,7 +123,7 @@ export default function MicheladasPage() {
             Micheladas Viche
           </h1>
 
-          <p style={{ fontSize: '24px', maxWidth: '700px' }}>
+          <p style={{ fontSize: isMobile ? '18px' : '24px', maxWidth: '700px' }}>
             Las mejores micheladas premium de Valledupar con sabores tropicales,
             ambiente urbano y experiencias únicas.
           </p>

@@ -92,7 +92,7 @@ export default function MicheladasPage() {
           Micheladas Viche
         </h1>
         <a href="#carrito" style={linkStyle}>Carrito
-          <img src="./public/carrito.png" alt="Carrito" style={{ width: '30px', height: '30px' }} />
+          <img src="./public/carrito.png" style={{ width: '30px', height: '30px' }} />
         </a>
 
         <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap',justifyContent: 'right',width: '100%', color: 'white' }}>

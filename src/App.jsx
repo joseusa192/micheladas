@@ -73,7 +73,7 @@ export default function MicheladasPage() {
       <nav
         style={{
           backgroundColor: '#70d100',
-          padding: '18px 40px',
+          padding: '10px 10px',
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           justifyContent: 'space-between',
@@ -91,6 +91,9 @@ export default function MicheladasPage() {
         <h1 style={{ color: '#ffffff', fontSize: '42px' }}>
           Micheladas Viche
         </h1>
+        <a href="#carrito" style={linkStyle}>Carrito
+          <img src="./public/carrito.png" alt="Carrito" style={{ width: '30px', height: '30px' }} />
+        </a>
 
         <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap',justifyContent: 'right',width: '100%', color: 'white' }}>
           <a href="#inicio" style={linkStyle}>Inicio</a>
@@ -332,13 +335,13 @@ export default function MicheladasPage() {
       </section>
 
       {/* CARRITO */}
-      <section
+      <section id="carrito"
         style={{
           padding: '80px 40px',
           backgroundColor: '#f4f4f4'
         }}
       >
-        <h2 style={sectionTitle}>Carrito de Compras</h2>
+        <h2  style={sectionTitle}>Carrito de Compras</h2>
 
         {cart.length === 0 ? (
           <p style={{ textAlign: 'center' }}>No hay productos agregados.</p>

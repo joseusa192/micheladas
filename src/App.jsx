@@ -91,9 +91,7 @@ export default function MicheladasPage() {
         <h1 style={{ color: '#ffffff', fontSize: '42px' }}>
           Micheladas Viche
         </h1>
-        <a href="#carrito" style={linkStyle}>Carrito
-          <img src="./public/carrito.png" style={{ width: '30px', height: '30px' }} />
-        </a>
+        <a href="https://www.flaticon.es/iconos-gratis/carrito-inteligente" title="carrito inteligente iconos">Carrito inteligente iconos creados por Freepik - Flaticon</a>
 
         <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap',justifyContent: 'right',width: '100%', color: 'white' }}>
           <a href="#inicio" style={linkStyle}>Inicio</a>

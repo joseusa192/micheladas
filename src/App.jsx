@@ -327,7 +327,7 @@ export default function MicheladasPage() {
           <iframe
             width="100%"
             height="500"
-            src="https://www.youtube.com/embed/watch?v=JkQabPjazB0"
+            src="<https://www.youtube.com/embed/JkQabPjazB0>"
             title="Video"
             allowFullScreen
           ></iframe>

@@ -92,7 +92,7 @@ export default function MicheladasPage() {
           Micheladas Viche
         </h1>
         <a href="#carrito" style={linkStyle}>Carrito
-          <img src="../public/carrito.png" style={{ width: '30px', height: '30px' }} />
+          <img src="/carrito.png" style={{ width: '30px', height: '30px' }} />
         </a>
 
         <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap',justifyContent: 'right',width: '100%', color: 'white' }}>
@@ -327,7 +327,7 @@ export default function MicheladasPage() {
           <iframe
             width="100%"
             height="500"
-            src="https://www.youtube.com/watch?v=JkQabPjazB0"
+            src="https://www.youtube.com/embed/watch?v=JkQabPjazB0"
             title="Video"
             allowFullScreen
           ></iframe>

@@ -324,13 +324,14 @@ export default function MicheladasPage() {
             boxShadow: '0 10px 25px rgba(0,0,0,0.2)'
           }}
         >
-          <iframe
-            width="100%"
-            height="500"
-            src="<https://www.youtube.com/embed/JkQabPjazB0>"
-            title="Video"
-            allowFullScreen
-          ></iframe>
+          <iframe width="1000" height="450" 
+            src="https://www.youtube.com/embed/JkQabPjazB0?si=OVTHloo7LG5omBHM" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+            </iframe>
         </div>
       </section>
 

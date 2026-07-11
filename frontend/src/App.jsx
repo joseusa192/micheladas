@@ -1,65 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 
 export default function MicheladasPage() {
   const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  const products = [
-    {
-      id: 1,
-      name: 'Michelada Clásica',
-      price: 18000,
-      image:
-        'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80',
-      desc: 'Cerveza fría, limón, sal y salsa especial.'
-    },
-    {
-      id: 2,
-      name: 'Michelada Mango Biche',
-      price: 24000,
-      image:
-        'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=80',
-      desc: 'Mezcla tropical con mango biche y tajín.'
-    },
-    {
-      id: 3,
-      name: 'Michelada Maracuyá',
-      price: 26000,
-      image:
-        'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80',
-      desc: 'Sabor cítrico y refrescante premium.'
-    },
-    {
-      id: 4,
-      name: 'Michelada Camaronera',
-      price: 35000,
-      image:
-        'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80',
-      desc: 'Especial con camarones y salsas artesanales.'
-    },
-    {
-      id: 5,
-      name: 'Michelada XXL',
-      price: 42000,
-      image:
-        'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80',
-      desc: 'Presentación gigante para compartir.'
-    },
-    {
-      id: 6,
-      name: 'Michelada Viche',
-      price: 28000,
-      image:
-        'https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?auto=format&fit=crop&w=800&q=80',
-      desc: 'Nuestra especialidad con toque verde viche.'
-    }
-  ];
+  const isMobile = window.innerWidth <= 768;
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/productos")
+      .then((response) => response.json())
+      .then(data => setProducts(data))
+      .catch(error => console.error(error));
+  }, []);
 
   const addToCart = (product) => {
-    setCart([...cart, product]);
-  };
+    setCart((prevCart) => [...prevCart, product]);
+};
 
-  const total = cart.reduce((acc, item) => acc + item.price, 0);
-  const isMobile = window.innerWidth <= 768;
+const total = cart.reduce((acumulado, item) => {
+    return acumulado + Number(item.price);
+}, 0);
+
+/*console.log("Total:", total);*/
 
   return (
     <div
@@ -131,7 +93,9 @@ export default function MicheladasPage() {
             ambiente urbano y experiencias únicas.
           </p>
 
-          <button style={heroButton}>Ordenar Ahora</button>
+          <a href="#menu" style={{ textDecoration: 'none' }}>
+            <button style={heroButton}>Ordenar Ahora</button>
+          </a>
         </div>
       </section>
 
@@ -189,7 +153,7 @@ export default function MicheladasPage() {
               }}
             >
               <img
-                src={product.image}
+                src={product.image_url}
                 alt={product.name}
                 style={{
                   width: '100%',
@@ -204,7 +168,7 @@ export default function MicheladasPage() {
                 </h3>
 
                 <p style={{ margin: '15px 0', color: '#555' }}>
-                  {product.desc}
+                  {product.description}
                 </p>
 
                 <h4 style={{ color: '#d4a200', fontSize: '26px' }}>
@@ -261,49 +225,6 @@ export default function MicheladasPage() {
         </div>
       </section>
 
-      {/* NOSOTROS */}
-      <section
-        id="nosotros"
-        style={{
-          padding: '80px 40px',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit,minmax(350px,1fr))',
-          alignItems: 'center',
-          gap: '40px'
-        }}
-      >
-        <img
-          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80"
-          alt="Nosotros"
-          style={{
-            width: '100%',
-            borderRadius: '25px',
-            boxShadow: '0 10px 25px rgba(0,0,0,0.2)'
-          }}
-        />
-
-        <div>
-          <h2 style={sectionTitle}>¿Quiénes Somos?</h2>
-
-          <p style={{ lineHeight: '1.8', fontSize: '18px' }}>
-            Somos una marca enfocada en transformar la experiencia tradicional de las
-            micheladas en una propuesta moderna, urbana y digital. Nuestro negocio
-            combina sabores premium, marketing en redes sociales y pedidos online.
-          </p>
-
-          <div style={{ marginTop: '25px' }}>
-            <h3 style={{ color: '#70d100' }}>Misión</h3>
-            <p>
-              Ofrecer experiencias únicas mediante bebidas innovadoras y excelente servicio.
-            </p>
-
-            <h3 style={{ color: '#70d100', marginTop: '20px' }}>Visión</h3>
-            <p>
-              Ser la marca de micheladas más reconocida de la región Caribe.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* VIDEO */}
       <section
@@ -327,10 +248,10 @@ export default function MicheladasPage() {
           <iframe width="1000" height="450" 
             src="https://www.youtube.com/embed/JkQabPjazB0?si=OVTHloo7LG5omBHM" 
             title="YouTube video player" 
-            frameborder="0" 
+            frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
+            referrerPolicy="strict-origin-when-cross-origin" 
+            allowFullScreen>
             </iframe>
         </div>
       </section>
@@ -372,44 +293,11 @@ export default function MicheladasPage() {
             ))}
 
             <hr />
-
-            <h3 style={{ marginTop: '20px', color: '#70d100' }}>
-              Total: ${total.toLocaleString('es-CO')}
-            </h3>
+              <h3 style={{ marginTop: '20px', color: '#70d100' }}>
+                Total: ${new Intl.NumberFormat("es-CO").format(total)}
+              </h3>
           </div>
         )}
-      </section>
-
-      {/* CONTACTO */}
-      <section
-        id="contacto"
-        style={{
-          backgroundColor: '#70d100',
-          color: 'white',
-          padding: '90px 40px'
-        }}
-      >
-        <h2 style={{ fontSize: '50px', textAlign: 'center' }}>Contacto</h2>
-
-        <form
-          style={{
-            maxWidth: '700px',
-            margin: '40px auto 0 auto',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px'
-          }}
-        >
-          <input type="text" placeholder="Nombre" style={inputStyle} />
-          <input type="email" placeholder="Correo" style={inputStyle} />
-          <textarea
-            placeholder="Mensaje"
-            rows="5"
-            style={inputStyle}
-          ></textarea>
-
-          <button style={heroButton}>Enviar Mensaje</button>
-        </form>
       </section>
 
       {/* FOOTER */}

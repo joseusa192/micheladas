@@ -1,0 +1,8 @@
+1. Modificar fotos.
+2. Cambiar colores.
+3. Separar carrito de compra.
+4. Base de datos sencilla.
+5. Establecer seguridad.
+6. Pagina modificadora de descripciones y precios (solo para administradores).
+7. Pagina recibidora de pedidos.
+8. Utilizar Flask.
